@@ -43,7 +43,10 @@ module.exports.dataForContest = async (req, res, next) => {
 module.exports.getContestById = async (req, res, next) => {
   const {
     params: { id },
+    tokenData: { userId, role },
   } = req;
+
+  const { CREATOR } = CONSTANTS;
 
   try {
     let contestInfo = await db.Contests.findOne({
@@ -60,10 +63,7 @@ module.exports.getContestById = async (req, res, next) => {
         {
           model: db.Offers,
           required: false,
-          where:
-            req.tokenData.role === CONSTANTS.CREATOR
-              ? { userId: req.tokenData.userId }
-              : {},
+          where: role === CREATOR ? { userId } : {},
           attributes: { exclude: ['userId', 'contestId'] },
           include: [
             {
@@ -76,20 +76,23 @@ module.exports.getContestById = async (req, res, next) => {
             {
               model: db.Ratings,
               required: false,
-              where: { userId: req.tokenData.userId },
+              where: { userId },
               attributes: { exclude: ['userId', 'offerId'] },
             },
           ],
         },
       ],
     });
+
     contestInfo = contestInfo.get({ plain: true });
+
     contestInfo.Offers.forEach(offer => {
       if (offer.Rating) {
         offer.mark = offer.Rating.mark;
       }
       delete offer.Rating;
     });
+
     res.send(contestInfo);
   } catch (e) {
     next(new ServerError());
