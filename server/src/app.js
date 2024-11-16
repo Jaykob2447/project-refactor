@@ -12,3 +12,9 @@ app.use(router);
 app.use(handlerError);
 
 module.exports = app;
+
+// main
+//   \  /addNewPage \
+//   dev             dev            dev
+//     \                           /
+//     finxHomePage
