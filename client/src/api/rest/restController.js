@@ -26,7 +26,7 @@ export const deleteCatalog = data => http.post('deleteCatalog', data);
 export const removeChatFromCatalog = data =>
   http.post('removeChatFromCatalog', data);
 export const changeCatalogName = data => http.post('updateNameCatalog', data);
-// limit=${data.limit}&offset=${data.offset}&status=${data.contestStatus}
+
 export const getCustomersContests = data =>
   http.get(`contests/byCustomer?${stringify(data)}`);
 

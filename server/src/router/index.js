@@ -11,16 +11,6 @@ const contestsRouter = require('./contestsRouter');
 
 const router = express.Router();
 
-// post('',body);
-// get('?page=2&results=10') => req.query
-// get('/:id') => req.params.id
-// patch('/:id', body)
-// delete('/:id')
-
-// /contests
-// /users
-// ...
-
 router.use('/contests', contestsRouter);
 
 router.post(
@@ -37,36 +27,6 @@ router.post(
   checkToken.checkToken,
   contestController.dataForContest
 );
-
-// post /pay -> post /contests
-// router.post(
-//   '/pay',
-//   checkToken.checkToken,
-//   basicMiddlewares.onlyForCustomer,
-//   upload.uploadContestFiles,
-//   basicMiddlewares.parseBody,
-//   validators.validateContestCreation,
-//   userController.payment
-// );
-
-// get /contests/customers
-// /users/id/contests
-// /customers/id/contests
-// get /contests/byCustomer
-// router.post(
-//   '/getCustomersContests',
-//   checkToken.checkToken,
-//   contestController.getCustomersContests
-// );
-
-// get /getContestById -> get /contests/:id
-// headers -> params
-// router.get(
-//   '/getContestById',
-//   checkToken.checkToken,
-//   basicMiddlewares.canGetContest,
-//   contestController.getContestById
-// );
 
 router.post(
   '/getAllContests',
