@@ -18,6 +18,7 @@ contestsRouter.post(
   validators.validateContestCreation,
   userController.payment
 );
+
 contestsRouter.get(
   '/byCustomer',
   checkToken.checkToken,
