@@ -18,6 +18,11 @@ contestsRouter.post(
   validators.validateContestCreation,
   userController.payment
 );
+contestsRouter.get(
+  '/byCustomer',
+  checkToken.checkToken,
+  contestController.getCustomersContests
+);
 
 contestsRouter.get(
   '/:id',

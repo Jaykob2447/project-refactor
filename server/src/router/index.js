@@ -49,11 +49,15 @@ router.post(
 //   userController.payment
 // );
 
-router.post(
-  '/getCustomersContests',
-  checkToken.checkToken,
-  contestController.getCustomersContests
-);
+// get /contests/customers
+// /users/id/contests
+// /customers/id/contests
+// get /contests/byCustomer
+// router.post(
+//   '/getCustomersContests',
+//   checkToken.checkToken,
+//   contestController.getCustomersContests
+// );
 
 // get /getContestById -> get /contests/:id
 // headers -> params
