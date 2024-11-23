@@ -15,6 +15,8 @@ module.exports = {
           allowNull: false,
         },
         operationType: {
+          // TODO move to constants
+
           type: Sequelize.ENUM(['INCOME', 'EXPENSE']),
           allowNull: false,
         },
