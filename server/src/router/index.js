@@ -47,8 +47,8 @@ router.get(
   contestController.getContestById
 );
 
-router.post(
-  '/getAllContests',
+router.get(
+  '/allContests',
   checkToken.checkToken,
   basicMiddlewares.onlyForCreative,
   contestController.getContests
